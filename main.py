@@ -1,45 +1,41 @@
-
 def main():
-    with open("books/frankenstein.txt") as f:
+    book_path = "books/frankenstein.txt"
+    text= get_book_text(book_path)
+    amount_of_words = text_from_book(text)
+    strings_lower = count_characters(text)
+    list_strings= [strings_lower]
+    
+
+    print(list_strings)
+
+def get_book_text(path):
+    with open(path) as f:
         return f.read()
 
-def number_of_words():
-    text = main().split
-    words = len(text())
-    return words
+def text_from_book(text):
+    words= text.split()
+    count= len(words)
+    return count
 
-numbers = number_of_words()
+def count_characters(text):
+    lowered_string = text.lower()
+    clean_text= "".join(char for char in lowered_string if char.isalpha())
+    dictionary_of_text= {}
 
-def count_characters():
-    text= main().lower()
-    dictionary_of_book= {}
-    for i in text:
-        dictionary_of_book[i] = dictionary_of_book.get(i,0) +1
-    return dictionary_of_book
-
-dictionary_of_book= {}
-text= main().lower()
-
-for i in text:
-    dictionary_of_book[i] = dictionary_of_book.get(i,0) +1
-
-
-
-message= f"""---Begin report of books/frankenstein.txt---/n
-    {numbers} words found in a text
-    
-    dafadsf"""
-def sort_on(dictionary_of_book):
-    return dictionary_of_book[count_characters()]
-
-dictionary= [dictionary_of_book]
-
-dictionary.sort(reverse=True, key= sort_on)
-print(dictionary)
+    for i in clean_text:
+        if i not in dictionary_of_text:
+            dictionary_of_text[i] = 1
+        
+        
+        else:
+            dictionary_of_text[i] +=1
+    return dictionary_of_text
 
 
 
 
+
+main()
 
     
   
